@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="es">
+<meta charset="utf-8">
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .activity {
+            color: #005183;
+            font-weight: normal;
+            font-size: 22px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .contact-title {
+            font-size: 40px;
+            font-weight: lighter;
+        }
+
+        .card {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 96%, rgba(117, 161, 188, 1) 98%, rgba(0, 81, 131, 1) 100%);
+            width: auto;
+            border-radius: 15px;
+        }
+
+        .datos-empleo {
+            font-size: 15px;
+        }
+
+        .body-title {
+            font-size: 60px;
+            font-weight: lighter;
+            width: 100%;
+            text-align: center;
+        }
+
+        .sidebar {
+            background: rgb(0, 39, 62);
+            background: linear-gradient(90deg, rgba(0, 39, 62, 1) 0%, rgba(0, 81, 131, 1) 100%);
+            color: white;
+            padding: 40px;
+        }
+
+        .principal {
+            color: black;
+            padding: 40px;
+        }
+
+        .education {
+            margin-bottom: 60px;
+        }
+
+        .full-height {
+            height: 100vh;
+        }
+
+        .reference {
+            color: #46c9de;
+        }
+
+        .reference-dark {
+            color: #00588e;
+        }
+
+        body {
+            font-size: 25px;
+        }
+
+        .body-subtitle {
+            font-size: 30px;
+            font-weight: bold;
+            color: #005183;
+            width: 100%;
+            text-align: center;
+        }
+
+        .body-radialgraph {
+            text-align: center;
+        }
+
+        .paragraph {
+            text-align: justify;
+        }
+
+        .profile-picture {
+            border-radius: 100%;
+            height: 200px;
+
+        }
+
+        .profile-picture-container {
+            margin: auto;
+            text-align: center;
+            margin-bottom: 60px;
+            margin-top: 50px;
+        }
+
+        .progress-height-big {
+            height: 25px;
+        }
+
+        .strong {
+            font-weight: bold;
+            color: #005183;
+        }
+
+        .small {
+            font-size: 15px;
+        }
+
+        /* TIMELINE 2 */
+
+        .circle {
+            padding: 5px 20px;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: light;
+            background-color: #005183;
+            color: #fff;
+            max-height: 100px;
+            z-index: 2;
+        }
+
+        .how-it-works.row .col-3 {
+            align-self: stretch;
+        }
+
+        .how-it-works.row .col-3::after {
+            content: "";
+            position: absolute;
+            border-left: 3px solid #005183;
+            z-index: 1;
+        }
+
+        .how-it-works.row .col-3.bottom::after {
+            height: 50%;
+            left: 50%;
+            top: 50%;
+        }
+
+
+        .how-it-works.row .col-3.full-right::after {
+            height: 100%;
+            left: calc(50% -10px);
+        }
+
+        .how-it-works.row .col-3.full-left::after {
+            height: 100%;
+            left: calc(50% );
+        }
+
+        .how-it-works.row .col-3.top::after {
+            height: 50%;
+            left: calc( 50% +3px );
+            top: 0;
+        }
+
+
+        .timeline div {
+            padding: 0;
+            height: 40px;
+        }
+
+        .timeline hr {
+            border-top: 3px solid #005183;
+            margin: 0;
+            top: 17px;
+            position: relative;
+        }
+
+        .timeline .col-3 {
+            display: flex;
+            overflow: hidden;
+        }
+
+        .timeline .corner {
+            border: 3px solid #005183;
+            width: 100%;
+            position: relative;
+            border-radius: 15px;
+        }
+
+        .timeline .top-right {
+            left: 50%;
+            top: -50%;
+        }
+
+        .timeline .left-bottom {
+            left: calc( -49.5% );
+            top: calc(50% - 3px);
+        }
+        
+
+        .timeline .top-left {
+            left: calc( -49.5% ) ;
+            top: -50%;
+        }
+
+        .timeline .right-bottom {
+            left: 50%;
+            top: calc(50% - 3px);
+        }
+
+        /* END OF TIMELINE 2 */
+
+        .text-blue {
+            color: #005183;
+        }
+
+        .card {
+            border: none;
+            margin-bottom: 24px;
+            -webkit-box-shadow: 0 0 13px 0 rgba(236, 236, 241, .44);
+            box-shadow: 0 0 13px 0 rgba(236, 236, 241, .44);
+        }
+
+        .structure {
+            margin-right: 30px;
+        }
+
+        .full-width{
+            width: 100%;
+        }
+
+        #habilidades {
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="row">
+            <div class="col-3 sidebar full-height">
+                <!-- CONTACTO -->
+                <div class="row">
+                    <div class="col" style="position: relative;">
+                        <div class="profile-picture-container">
+                            <img class="profile-picture"
+                                src="https://github.com/TonyTAZ95/curriculum/blob/main/img/foto.png?raw=true"
+                                alt="profile.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col contact-title">
+                        <p>
+                            Contacto:
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-0">
+                            aa.zepedamontiel@gmail.com
+                        </p>
+                        <p class="reference mt-0">(mail)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-0">
+                            www.linkedin.com/in/antonio-aldair-zepeda-montiel-a44051192
+                        </p>
+                        <p class="reference mt-0">(linkedin)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-0">
+                            www.github.com/TonyTAZ95
+                        </p>
+                        <p class="reference mt-0">(github)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-0">
+                            +51 (462) 169 87 37
+                        </p>
+                        <p class="reference mt-0">(movil)</p>
+                    </div>
+                </div>
+
+                <hr>
+            </div>
+
+            <div class="col-9 principal full-height">
+
+                <div class="row">
+                    <div class="col body-title" class="mb-0">
+                        Antonio Aldair Zepeda Montiel
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col body-subtitle">
+                        <p class="mt-0">
+                            Ingeniero en Sistemas Computacionales.
+                        </p>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row">
+
+                    <div class="col body-intro">
+                        <p class="mt-4 paragraph">
+                            Desarrollo web, Gestión de servidores, Bases de datos, MVC. Motivado y en búsqueda de
+                            excelencia, aprendizaje, experiencia personal y profesional. Con <span class="strong">4
+                                años de experiencia</span> como desarrollador web, en servidores XAMPP, Apache y Node, y
+                            <span class="strong">12 años de experiencia</span> como profesor de matemáticas desde
+                            Aritmética hasta Cálculo Integral.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row education">
+                    <div class="col-6">
+                        <div class="card mt-4 shadow">
+                            <div class="card-body">
+                                <h3 class="card-title">Ingeniero en Sistemas Computacionales.</h3>
+                                <h6 class="card-subtitle mb-2 reference-dark">Titulado - Graduado por excelencia
+                                    académica</h6>
+                                <p class="card-text">
+                                    División de Ingenierías Campus Irapuato-Salamanca - Universidad de Guanajuato.
+                                </p>
+                                <h6><span class="strong">Generación: </span>&nbsp; 2014 - 2020</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card mt-4 shadow">
+                            <div class="card-body">
+                                <h3 class="card-title">Técnico en Programación.</h3>
+                                <h6 class="card-subtitle mb-2 reference-dark">Titulado - Cédula Profesional: 10553409
+                                </h6>
+                                <p class="card-text">
+                                    Centro de Bachillerato Tecnológico, Industrial y de Servicios No. 65 - DGETI.
+                                </p>
+                                <h6><span class="strong">Generación: </span>&nbsp; 2011 - 2014</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col body-subtitle">
+                        <p class="mt-0">
+                            Experiencia y Habilidades.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row experience mt-4">
+
+                    <div class="col-6">
+                        <div class="list-group">
+                            <a class="list-group-item list-group-item-action p-3">
+                                <p class="mb-1 activity"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg>&nbsp;Dashboard del Programa de Reducción de Brecha Digital para visualización de datos, reportes de
+                                    actividades, tickets de mantenimiento e indicadores de servicio.</p>
+                                <div class="d-flex w-100 justify-content-between ">
+                                    <h5 class="mb-1"></h5>
+                                    <small class="bold small structure">React JS y Node JS - Linux Server</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item list-group-item-action p-3">
+                                <p class="mb-1 activity"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg>&nbsp;Plataforma para generaciónde Carta de Origen y registro de usuarios,
+                                    Consumo de API bancaria para pagos en linea.</p>
+                                <div class="d-flex w-100 justify-content-between ">
+                                    <h5 class="mb-1"></h5>
+                                    <small class="bold small structure">Angular y Php - GoDaddy Server</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item list-group-item-action p-3">
+                                <p class="mb-1 activity"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg>&nbsp;Sistema de administración de datos y monitoreo CNMAESTRO CAMBIUM -
+                                    PFSENSE, automatización de procesos, rutinas crontab, y generación de reportes
+                                    automáticos.</p>
+                                <div class="d-flex w-100 justify-content-between ">
+                                    <h5 class="mb-1"></h5>
+                                    <small class="bold small structure">Php y Javascript - Linux Server</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item list-group-item-action p-3">
+                                <p class="mb-1 activity"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg>&nbsp;Página Web del Programa de Reducción de Brecha Digital para visualización de datos públicos, gráficas y
+                                    mapa interactivo.</p>
+                                <div class="d-flex w-100 justify-content-between ">
+                                    <h5 class="mb-1"></h5>
+                                    <small class="bold small structure">Php y Javascript - Linux Server</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item list-group-item-action p-3">
+                                <p class="mb-1 activity"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg>&nbsp;Plataforma para uso exclusivo de estudiantes de la Universidad de
+                                    Guanajuato. Generación y subida de archivos, validación Azure para cuentas
+                                    institucionales.</p>
+                                <div class="d-flex w-100 justify-content-between ">
+                                    <h5 class="mb-1"></h5>
+                                    <small class="bold small structure">Php y Javascript - Linux Server</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-6 body-radialgraph mt-0">
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <span class="strong">Español (Nativo):</span>
+                                <div class="progress mt-2 progress-height-big" role="progressbar"
+                                    aria-label="Default striped example" aria-valuenow="100" aria-valuemin="0"
+                                    aria-valuemax="100">
+                                    <div class="progress-bar progress-bar-striped progress-height-big"
+                                        style="width: 100%; background-color: #005183;">100%</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <span class="strong">Inglés:</span>
+                                <div class="progress  mt-2 progress-height-big" role="progressbar"
+                                    aria-label="Default striped example" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100">
+                                    <div class="progress-bar progress-bar-striped progress-height-big"
+                                        style="width: 70%; background-color: #005183;">70%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col align-items-center full-width">
+                                <canvas id="habilidades"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col body-subtitle">
+                                    <p class="mt-2">
+                                        Timeline.
+                                    </p>
+                                </div>
+
+                                <div class="container">
+                                    <!--first section-->
+                                    <div class="row align-items-center how-it-works d-flex">
+                                        <div
+                                            class="col-3 text-center bottom d-inline-flex justify-content-center align-items-center">
+                                            <div class="circle">10/2022 - Hoy</div>
+                                        </div>
+                                        <div class="col-9">
+                                            <h4 class="puesto">Jefe de Servicios de Conectividad - Secretaría de Infraestructura, Conectividad y Movilidad.</h4>
+                                            <h6>Jefe de Servicios de Conectividad en la Dirección General de Conectividad Digital Estatal, Desarrollador Web.</h6>
+                                            <p class="datos-empleo">
+                                                <span class="strong">Dirección:</span> México 110, San José de Tránsito, Silao, Gto. <br>
+                                                <span class="strong">C.P.</span> 36298. - 
+                                                <span class="strong">Tel:</span> 01 (472) 215 3300.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!--path between 1-2-->
+                                    <div class="row timeline">
+                                        <div class="col-3">
+                                            <div class="corner top-right"></div>
+                                        </div>
+                                        <div class="col-6">
+                                            <hr />
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="corner left-bottom"></div>
+                                        </div>
+                                    </div>
+                                    <!--second section-->
+                                    <div class="row align-items-center justify-content-end how-it-works d-flex">
+                                        <div class="col-9 text-right">
+                                            <h4 class="puesto">Desarrollador Web en Unidad de Sistemas Computacionales.</h4>
+                                            <h6>Desarrollador Web, administración y configuración de servidores, generación de reportes y estadísticas, mantenimiento de servicios web, programación general, bases de datos, entre otros.</h6>
+                                            <p class="datos-empleo">
+                                                <span class="strong">Dirección:</span> Ciudad Universitaria No. 112, Comunidad de San Rafael de Uruétaro, Salamanca, Gto. <br>
+                                                <span class="strong">C.P.</span> 36541. - 
+                                                <span class="strong">Tel:</span> 01 (464) 647 9940. <span class="strong">ext:</span> 2378.
+                                                <span class="strong">Email:</span> contacto@cinergiaug.org
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="col-3 text-center full-right d-inline-flex justify-content-center align-items-center">
+                                            <div class="circle">02/2020 - 10/2022</div>
+                                        </div>
+                                    </div>
+                                    <!--path between 2-3-->
+                                    <div class="row timeline">
+                                        <div class="col-3">
+                                            <div class="corner right-bottom"></div>
+                                        </div>
+                                        <div class="col-6">
+                                            <hr />
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="corner top-left"></div>
+                                        </div>
+                                    </div>
+                                    <!--third section-->
+                                    <div class="row align-items-center how-it-works d-flex">
+                                        <div
+                                            class="col-3 text-center full-left d-inline-flex justify-content-center align-items-center">
+                                            <div class="circle">08/2019 - 11/2019</div>
+                                        </div>
+                                        <div class="col-9">
+                                            <h4 class="puesto">Practicante de mantenimiento general.</h4>
+                                            <h6>Prácticas de mantenimiento y soporte para equipo de cómputo, desarrollo de rutinas crontab programables.</h6>
+                                            <p class="datos-empleo">
+                                                <span class="strong">Dirección:</span> Edificio 7, Av. Apaseo Ote. s/n Cd. Industrial, Irapuato, Gto. <br>
+                                                <span class="strong">C.P.</span> 36541. - 
+                                                <span class="strong">Tel:</span> 01 (462) 623 9400, <span class="strong">ext:</span> 42440.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!--path between 3-4-->
+                                    <div class="row timeline">
+                                        <div class="col-3">
+                                            <div class="corner top-right"></div>
+                                        </div>
+                                        <div class="col-6">
+                                            <hr />
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="corner left-bottom"></div>
+                                        </div>
+                                    </div>
+                                    <!--fourth section-->
+                                    <div class="row align-items-center justify-content-end how-it-works d-flex">
+                                        <div class="col-9 text-right">
+                                            <h4 class="puesto">Profesor Sustituto de Cálculo diferencial e integral.</h4>
+                                            <h6>Maestro de Grupo y Asesor personal.</h6>
+                                            <p class="datos-empleo">
+                                                <span class="strong">Dirección:</span> Km. 4.5 Carr. Irapuato-Silao Col. Santa Fe, Irapuato, Gto. <br>
+                                                <span class="strong">C.P.</span> 36620. -
+                                                <span class="strong">Tel:</span> 01 (462) 625 1914, 01 (462) 624 1442.
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="col-3 top text-center d-inline-flex justify-content-center align-items-center">
+                                            <div class="circle">
+                                                03/2016 - 07/2019
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <!-- end card -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+        var marksCanvas = document.getElementById("habilidades");
+
+
+        const data = {
+            labels: [
+                'Python',
+                'JavaScript',
+                'React',
+                'HTML - CSS',
+                'Angular',
+                'MySQL',
+                'Node.js',
+                'Php',
+                'Linux - Ubuntu',
+            ],
+            datasets: [{
+                label: 'Habilidades',
+                data: [80, 70, 85, 75, 40, 75, 65, 90, 50],
+                color: 'rgb(0, 81, 131)',
+                fill: true,
+                backgroundColor: 'rgba(0, 81, 131, 0.2)',
+                borderColor: 'rgb(0, 81, 131)',
+                pointBackgroundColor: 'rgb(0, 81, 131)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 99, 132)',
+            }]
+        };
+
+        const config = {
+            type: 'radar',
+            data: data,
+            options: {
+                elements: {
+                    line: {
+                        borderWidth: 3
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                size: 20,
+                                weight: 'bold',
+
+                            }
+                        }
+                    },
+                },
+                scales: {
+                    r: {
+                        pointLabels: {
+                            font: {
+                                size: 17,
+                                weight: 'bold',
+                            }
+                        },
+                        grid: {
+                            color: 'gray'
+                        },
+                        beginAtZero: true,
+                        ticks: {
+                            callback: (value, tick, values) => {
+                                return value + '%';
+                            }
+                        }
+                    }
+                },
+            },
+        };
+
+        var radarChart = new Chart(marksCanvas, config);
+
+    </script>
+
+
+</body>
+
+<foot>
+
+</foot>
+
+</html>
